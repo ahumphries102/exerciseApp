@@ -2,3 +2,12 @@
   margin:0;
   padding: 0;
 }
+nav{
+	background-color: grey;
+}
+
+nav a{
+	color: black;
+	font-size: 32px;
+	margin: 2%;	
+}
