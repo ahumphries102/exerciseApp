@@ -8,10 +8,30 @@ export default function CreateExercises () {
 		description:'',
 		duration:0,
 		date: new Date(),
-		users:['']
+		users:[]
 	})
+
+	const getData = async ()=> {
+		try{
+			let fetchData = await fetch('http://localhost:5000/users')
+			let useData = await fetchData.json() 
+			if(useData.length > 0){
+				//First we make sure our state is still an object, we then spread out the current object within it.
+				//Secondly we target the users and set that keys value to an array and within it we spread out the current array.
+				//Lastly we spread out the array within the database so that each value appears as
+				//a separate string. It should look something like 'name', 'name', 'name' and not ['name', 'name', 'name']
+				setUserState({...userState, users:[...userState, ...useData.map((ele, index) => 
+						ele.username
+					)
+				]})
+			}
+		}
+		catch(error){
+			console.log('create-exercise line 32', error)
+		}
+	}
 	useEffect(() => {
-		setUserState({...userState, username:'test user', users:['test user']})
+		getData()
 	}, [])
 
 	let onChangeUserName = e => {
@@ -26,8 +46,8 @@ export default function CreateExercises () {
 		setUserState({...userState, duration:e.target.value})
 	}
 
-	let onChangeDate = ({e}) => {
-		setUserState({...userState, date:e.target.value})
+	let onChangeDate = date => {
+		setUserState({...userState, date:date})
 	}
 
 	let onSubmit = e => {
@@ -40,6 +60,22 @@ export default function CreateExercises () {
 		}
 
 		console.log(exercise)
+
+		try{
+		const postData = fetch('http://localhost:5000/exercises/add',{
+			method:"POST",
+			mode:"cors",
+			headers:{
+				"Accept":"application/json",
+				"Content-Type":"application/json"
+			},
+			body: JSON.stringify(exercise)
+		})
+		.then(resp => console.log(resp.data))
+		}
+		catch(error){
+			console.error(error, 'caught an error in exercise submit')
+		}
 		//window.location = '/'
 	}
   return(
