@@ -12,7 +12,7 @@ export default function Exercise(props){
 				<div>
 					<a href='#' onClick={() => props.deleteExercise(props.deleteExercise(props.exercise.__id))}>delete</a>
 				</div>
-		</div>
+			</div>
 		</div>
 	)
 }

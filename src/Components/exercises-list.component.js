@@ -1,45 +1,34 @@
 import React, {useState, useEffect} from 'react';
-import Exercise from './Exercise'
-
 export default function ExercisesList () {
-	let [exerciseState, setExerciseState] = useState({
-		username:'',
-		description:'',
-		duration:0,
-		date: new Date()
-	})
+	let [exerciseState, setExerciseState] = useState([])
 
+
+
+	const deleteExercise = (id) =>{
+		try{
+			let deleteExercisesD = fetch ('http://localhost:5000/exercises/'+id, {
+					method:'DELETE',
+					mode:'cors'
+				})
+		}
+		catch(error){
+			console.log(error)
+		}
+		return setExerciseState(exerciseState.filter(ele => ele._id != id))
+	}
 
 	let setData = async (id) => {
 		try{
 			let getExercises = await fetch('http://localhost:5000/exercises')
 			let useExercises = await getExercises.json()
-			setExerciseState({...exerciseState, username:[...useExercises.map((ele)=>
-				<div className='gridNames' key={ele._id}>{ele.username}</div>
-			)],
-			description:[...useExercises.map((ele)=>
-				<div className='gridDesc' key={ele._id}>{ele.description}</div>
-			)],
-			duration:[...useExercises.map((ele)=>
-				<div className='gridDur' key={ele._id}>{ele.duration}</div>
-			)]
-		})
-		}
-		catch(error){
-			console.log('woops deleteExercise', error)
-		}
-	}
+			
 
-	const deleteExercise = (id) =>{
-		try{
-			let getExercisesD = fetch ('http://localhost:5000/exercises'+id, {
-				method:'DELETE',
-				mode:'cors'
-			})
-			let useExercisesD = getExercisesD.json()
+      setExerciseState(useExercises);
+    
 		}
 		catch(error){
-			console.log(error)
+
+			console.log('woops deleteExercise', error)
 		}
 	}
 
@@ -50,11 +39,18 @@ export default function ExercisesList () {
 
   return(
   	<div>
-  		<div className = 'gridParent'>
-  			{exerciseState.username}
-  			{exerciseState.description}
-  			{exerciseState.duration}
-  		</div>
+  		{exerciseState.map(ele => (
+		        <div key={ele._id} className='gridParent'>
+		          <p>{ele.username}</p><br/>
+		          <p>{ele.description}</p>
+		          <p>{ele.duration}</p><br/>
+		          <p>{ele.date}</p>
+		          
+		            <a href='#' onClick={()=>deleteExercise(ele._id)}>delete</a>
+		          
+		        </div>
+      		))}
+  		<button onClick={()=>console.log(exerciseState)}>delete</button>
   	</div>
     )
 }

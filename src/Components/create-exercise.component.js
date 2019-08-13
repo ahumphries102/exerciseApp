@@ -62,7 +62,7 @@ export default function CreateExercises () {
 		console.log(exercise)
 
 		try{
-		const postData = fetch('http://localhost:5000/exercises/add',{
+		let postData = fetch('http://localhost:5000/exercises/add',{
 			method:"POST",
 			mode:"cors",
 			headers:{
@@ -71,7 +71,7 @@ export default function CreateExercises () {
 			},
 			body: JSON.stringify(exercise)
 		})
-		.then(resp => console.log(resp.data))
+		let useData = console.log(postData.data)
 		}
 		catch(error){
 			console.error(error, 'caught an error in exercise submit')

@@ -16,7 +16,7 @@ export default function router () {
 	const routeResult = useRoutes(routes)
   return (
     <div>
-	  	<div className = 'gridNav'>
+	  	<div className='gridNav'>
 		    <A href='/'>ExerTrack</A>
 		    <A href='/edit'>Edit Exercises</A>
 		    <A href='/create'>Create Exercise Log</A>
