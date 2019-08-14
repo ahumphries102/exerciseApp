@@ -16,12 +16,13 @@ export default function router () {
 	const routeResult = useRoutes(routes)
   return (
     <div>
-	  	<div className='gridNav'>
+	  	<nav className='gridParentNav'>
+	  		<A href='/'><span>EXCITEcercise</span></A>
 		    <A href='/'>ExerTrack</A>
 		    <A href='/edit'>Edit Exercises</A>
 		    <A href='/create'>Create Exercise Log</A>
 		    <A href='/user'>Create User</A>
-	    </div>
+	    </nav>
 	    {routeResult}
 	</div>
   	)

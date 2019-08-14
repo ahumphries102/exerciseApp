@@ -2,8 +2,6 @@ import React, {useState, useEffect} from 'react';
 export default function ExercisesList () {
 	let [exerciseState, setExerciseState] = useState([])
 
-
-
 	const deleteExercise = (id) =>{
 		try{
 			let deleteExercisesD = fetch ('http://localhost:5000/exercises/'+id, {
@@ -38,19 +36,23 @@ export default function ExercisesList () {
 
 
   return(
-  	<div>
+  	<div className='gridParentBody'>
+  		<ul className='exerciseTitles'>
+  			<li>Username</li>
+  			<li>Description</li>
+  			<li>Duration</li>
+  			<li>Date</li>
+  		</ul>
   		{exerciseState.map(ele => (
-		        <div key={ele._id} className='gridParent'>
-		          <p>{ele.username}</p><br/>
-		          <p>{ele.description}</p>
-		          <p>{ele.duration}</p><br/>
-		          <p>{ele.date}</p>
+		        <ul key={ele._id} className='gridChildExercise'>
+		          <li>{ele.username}</li>
+		          <li>{ele.description}</li>
+		          <li>{ele.duration}</li>
+		          <li>{ele.date.substring(0,10)}</li>
+		          <li><a href='#' onClick={()=>deleteExercise(ele._id)}>Delete</a></li>
 		          
-		            <a href='#' onClick={()=>deleteExercise(ele._id)}>delete</a>
-		          
-		        </div>
+		        </ul>
       		))}
-  		<button onClick={()=>console.log(exerciseState)}>delete</button>
   	</div>
     )
 }

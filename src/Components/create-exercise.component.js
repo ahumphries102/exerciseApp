@@ -79,10 +79,10 @@ export default function CreateExercises () {
 		//window.location = '/'
 	}
   return(
-  	<div>
+  	<div className='form'>
   		<h3>Create New Exercise Log</h3>
   		<form onSubmit={onSubmit}>
-  			<div className='form-group'>
+  			<div className='formGroup'>
   			<label>Username: </label>
 	  			<select useref='userInput'
 			  		required
@@ -96,7 +96,7 @@ export default function CreateExercises () {
 	  			</select>
   			</div>
 
-  			<div className='form-group'>
+  			<div className='formGroup'>
   			<label>Description: </label>
   				<input type='text'
   					required
@@ -105,7 +105,7 @@ export default function CreateExercises () {
   				/>
   			</div>
 
-  			<div className='form-group'>
+  			<div className='formGroup'>
   			<label>Duration (in minutes): </label>
   				<input type='text'
   					required
@@ -114,7 +114,7 @@ export default function CreateExercises () {
   				/>
   			</div>
 
-  			<div className='form-group'>
+  			<div className='formGroup'>
   			<label>Date: </label>
   				<div>
   				<DatePicker 
@@ -123,7 +123,7 @@ export default function CreateExercises () {
   				/>
   				</div>
   			</div>
-  			<input type='submit' value='Create Exercise Log'/>
+  			<button type='submit'>Create Exercise Log</button>
 		</form>
   	</div>
     )

@@ -35,10 +35,10 @@ export default function CreateUser () {
 		e.target.reset()
 	}
   return(
-  	<div>
+  	<div className='form'>
   		<h3>Create New Exercise Log</h3>
   		<form onSubmit={onSubmit}>
-  			<div className='form-group'>
+  			<div className='formGroup'>
   			<label>Username: </label>
 	  			<input type='text'
 	  			required
@@ -47,7 +47,7 @@ export default function CreateUser () {
 	  			/>
   			</div>
 
-  			<input type='submit' value='Create Exercise Log'/>
+  			<button type='submit'>Create User</button>
 		</form>
   	</div>
     )

@@ -2,13 +2,65 @@
   margin:0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Red Hat Display', sans-serif;
+
 }
-.gridParent{
-	display: flex;
-	justify-content: space-around;
-}
-.gridNav a{
+a{
 	color: black;
-	font-size: 32px;
-	margin: 2%;	
+	text-decoration: none;
+}
+a:active{
+	color:inherit;
+}
+a span{
+	width: auto;
+	padding:5%;
+	border: solid 1px white;
+}
+.form{
+	padding: 2%;
+}
+.formGroup label, .formGroup select, .formGroup input, button{
+	display: block;
+	margin-top: 1%;
+	width: 50%;
+	padding: 5px;
+	font-weight: 700;
+  	border-radius: 5px;
+}
+.form button {
+  padding: 5px;
+  border: none;
+  font: inherit;
+  color: white;
+  background-color: #66c2de;
+  /* show a hand cursor on hover; some argue that we
+  should keep the default arrow cursor for buttons */
+  cursor: pointer;
+}
+.gridParentNav{
+	background: coral;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	padding: 2.5%;
+}
+.gridParentBody{
+	display: grid;
+	grid-template-columns: 1;
+	grid-template-rows: repeat(auto,1fr);
+}
+.gridChildExercise, .exerciseTitles{
+	list-style: none;
+	text-align: justify;
+	padding: 2.5%;
+}
+.gridChildExercise li, .exerciseTitles li{
+	display: inline-block;
+	width: 20%;
+}
+.gridChildExercise:nth-child(even){
+	background-color: #dae3e6;
+}
+.exerciseTitles li{
+	font-weight: 700;
 }

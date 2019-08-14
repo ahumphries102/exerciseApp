@@ -13,10 +13,21 @@ export default function EditExercise (props) {
 
 	const update = async ()=>{
 		try{ 
-			await fetch('http://localhost5000/exercises')
-			.then(res => {
-				console.log(exerciseState)
+			let getExercises = fetch('http://localhost5000/exercises')
+			let useExercises = getExercises.json()
+			setExerciseState({...exerciseState,
+				username:useExercises.username,
+				description:useExercises.description,
+				duration:useExercises.duration,
+				date: new Date(useExercises.date),
 			})
+
+			let getUsers = fetch('http://localhost5000/users')
+			let userData = getUsers.json()
+
+			if(userData.length > 0){
+				setExerciseState({...exerciseState, username:userData.map(ele => ele.username)})
+			}
 		}
 		catch(error){
 			console.log('update function error', error)
