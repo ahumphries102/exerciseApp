@@ -24,6 +24,7 @@ export default function router () {
 		    <A href='/user'>Create User</A>
 	    </nav>
 	    {routeResult}
+	    <ExercisesList/>
 	</div>
   	)
 }
