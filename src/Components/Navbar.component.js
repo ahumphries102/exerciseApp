@@ -6,7 +6,7 @@ import CreateUser from './create-user.component'
 import CreateExercise from './create-exercise.component'
 
 const routes = {
-	'/exerciseApp': () => <ExercisesList />,
+	'/': () => <ExercisesList />,
 	'/edit/:id': () => <EditExercises/>,
 	'/user' : () => <CreateUser />,
 	'/create':() => <CreateExercise />
