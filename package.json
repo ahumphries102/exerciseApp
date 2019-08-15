@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:5000",
-  "homepage":"https://ahumphries102.github.io/",
+  "homepage":"https://ahumphries102.github.io/exerciseApp/",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
